@@ -8,6 +8,7 @@ using Microsoft.Extensions.Azure;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddAuthorization();
 builder.Services.AddApplicationInsightsTelemetry(builder.Configuration);
 
 var vaultUri = builder.Configuration["AZURE_KEY_VAULT_ENDPOINT"];
@@ -23,14 +24,6 @@ builder.Services.AddAzureClients(clientBuilder =>
 });
 
 builder.Services.AddHealthChecks();
-
-builder
-    .Services.AddHttpClient()
-    .AddControllers()
-    .AddNewtonsoftJson(options =>
-    {
-        options.SerializerSettings.MaxDepth = HttpHelper.BotMessageSerializerSettings.MaxDepth;
-    });
 
 // Create the Bot Framework Authentication to be used with the Bot Adapter.
 builder.Services.AddSingleton<
