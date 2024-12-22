@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+name: BotServiceStarter
+metadata:
+    template: azd-bot-service-starter
+workflows:
+    up:
+        steps:
+            - azd: provision
+            - azd: deploy --all
+services:
+    bot:
+        project: ./src/EchoBot
+        language: csharp
+        host: appservice

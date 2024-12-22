@@ -1,0 +1,7 @@
+{
+    "recommendations": [
+        "ms-azuretools.azure-dev",
+        "csharpier.csharpier-vscode",
+        "ms-azuretools.vscode-bicep"
+    ]
+}
